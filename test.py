@@ -69,7 +69,8 @@ runner = SequentialRunner()
 
 # Run the pipeline
 if ENABLE_METADATA_STORE:
-    layer.login()
+    layer_api_key = ""  # You can get yours from: https://app.layer.ai/me/settings/developer
+    layer.login_with_api_key(layer_api_key)
     layer.init("layer-kedro")
     print(runner.run(metadata_store_enabled_pipeline, data_catalog))
 else:
